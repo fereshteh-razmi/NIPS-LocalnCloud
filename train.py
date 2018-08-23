@@ -54,7 +54,7 @@ flags.DEFINE_integer('num_summary_images', 3,
                      'Number of images to display in Tensorboard.')
 
 flags.DEFINE_integer(
-    'save_summaries_steps', 20,
+    'save_summaries_steps', 250,
     'The frequency with which summaries are saved, in steps.')
 
 flags.DEFINE_integer(
@@ -62,7 +62,7 @@ flags.DEFINE_integer(
     'The frequency with which summaries are saved, in seconds.')
 
 flags.DEFINE_integer(
-    'save_model_steps', 500,
+    'save_model_steps', 250,
     'The frequency with which the model is saved, in steps.500')
 
 flags.DEFINE_string('hparams', '', 'Hyper parameters.')
