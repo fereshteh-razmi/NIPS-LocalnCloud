@@ -250,7 +250,7 @@ def main(_):
       hooks = [
           tf.train.LoggingTensorHook({'total_loss': total_loss,
                                       'global_step': global_step},
-                                     every_n_iter=1),
+                                     every_n_iter=10),
           tf.train.NanTensorHook(total_loss),
       ]
       chief_only_hooks = [
