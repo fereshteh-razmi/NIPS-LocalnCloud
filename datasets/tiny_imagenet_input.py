@@ -150,8 +150,8 @@ def num_examples_per_epoch(split):
     Number of example in the split.
   """
   if split.lower().startswith('train'):
-    return 100000
+    return 4000 #############
   elif split.lower().startswith('validation'):
-    return 10000
+    return 3000 ############
   else:
     raise ValueError('Invalid split: %s' % split)
