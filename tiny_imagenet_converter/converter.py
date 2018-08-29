@@ -122,7 +122,6 @@ def read_training_annotations(training_dir):
   result = []
   sub_dirs = tf.gfile.ListDirectory(training_dir)
   for sub_dir in sub_dirs:
-    print(sub_dir)
     if not sub_dir.startswith('n'):
       logging.warning('Found non-class directory in training dir: %s', sub_dir)
       continue
@@ -163,8 +162,12 @@ class TinyImagenetWriter(object):
                       annotations,
                       output_file):
     """Generates TFRecord file from given list of annotations."""
+    counter = 0
     with tf.python_io.TFRecordWriter(output_file) as writer:
       for image_filename, image_metadata in annotations:
+        counter = counter + 1
+        if (counter / 1000) == 0:
+            print("{}: {}".format(counter,image_filename))
         with tf.gfile.Open(image_filename) as f:
           image_buffer = f.read()
         image_format = get_image_format(image_filename)
