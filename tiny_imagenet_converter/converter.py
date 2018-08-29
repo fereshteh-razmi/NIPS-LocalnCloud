@@ -122,6 +122,7 @@ def read_training_annotations(training_dir):
   result = []
   sub_dirs = tf.gfile.ListDirectory(training_dir)
   for sub_dir in sub_dirs:
+    print(sub_dir)
     if not sub_dir.startswith('n'):
       logging.warning('Found non-class directory in training dir: %s', sub_dir)
       continue
