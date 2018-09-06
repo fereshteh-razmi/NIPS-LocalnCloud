@@ -22,7 +22,7 @@ from __future__ import print_function
 from absl import app
 from absl import flags
 
-import tensorflow-gpu as tf
+import tensorflow as tf
 
 import adversarial_attack
 import model_lib
