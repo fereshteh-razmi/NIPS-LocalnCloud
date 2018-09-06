@@ -271,7 +271,7 @@ def main(_):
       hooks.append(optimizer.make_session_run_hook(is_chief))
 
       with tf.train.MonitoredTrainingSession(
-          config=tf.ConfigProto(log_device_placement=True),
+          #config=tf.ConfigProto(log_device_placement=True),
           master=FLAGS.master,
           is_chief=is_chief,
           checkpoint_dir=FLAGS.output_dir,
