@@ -4,14 +4,10 @@ from __future__ import print_function
 
 import os
 
-from absl import app
 from absl import flags
 
 import tensorflow as tf
-
-import adversarial_attack
-import model_lib
-from datasets import dataset_factory
+import numpy as np
 
 FLAGS = flags.FLAGS
 
@@ -69,18 +65,26 @@ def tiny_imagenet_parser(value, image_size, is_training):
     label = tf.cast(
         tf.reshape(parsed['label/tiny_imagenet'], shape=[]), dtype=tf.int32)
 
-    print('here')
     return image, label
 
 
 def main():
-    filepath = os.path.join('tiny-imagenet-tfrecord', 'train.tfrecord')
+    cwd = os.path.dirname(__file__)
+    os.chdir(cwd)
+    filepath = os.path.join(os.getcwd(),'tiny-imagenet-tfrecord', 'train.tfrecord')
+    c = 0
+    for record in tf.python_io.tf_record_iterator(filepath):
+        c += 1
+    print("c:{}".format(c))
     dataset = tf.data.TFRecordDataset(filepath, buffer_size=8 * 1024 * 1024)
+
     image_size = 64
     is_training = False
     #dataset = tf.map_fn(lambda value: tiny_imagenet_parser(value, image_size, is_training), dataset)
     dataset = dataset.map(lambda value: tiny_imagenet_parser(value, image_size, is_training))
     # dataset = dataset.prefetch(tf.contrib.data.AUTOTUNE)
+    #print("shape is:{}".format(len(dataset)))
+    #tf.print(tf.size(dataset),[tf.size(dataset)],"dataset size is: ")
     num_examples = 4000
     num_classes = 200
     bounds = (-1, 1)
