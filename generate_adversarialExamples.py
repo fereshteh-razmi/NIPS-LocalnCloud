@@ -70,6 +70,7 @@ def tiny_imagenet_parser(value, image_size, is_training):
 
 def main():
     cwd = os.path.dirname(__file__)
+    print(cwd)
     os.chdir(cwd)
     filepath = os.path.join(os.getcwd(),'tiny-imagenet-tfrecord', 'train.tfrecord')
     c = 0
