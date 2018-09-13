@@ -248,9 +248,10 @@ def main(_):
       scaffold = tf.train.Scaffold(
           init_fn=_get_finetuning_init_fn(variable_averages))
       hooks = [
-          tf.train.LoggingTensorHook({'total_loss': total_loss,
+          tf.train.LoggingTensorHook({'learning_rate': learning_rate,
+                                      'total_loss': total_loss,
                                       'global_step': global_step},
-                                     every_n_iter=10),
+                                     every_n_iter=20),
           tf.train.NanTensorHook(total_loss),
       ]
       chief_only_hooks = [
