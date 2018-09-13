@@ -50,8 +50,8 @@ def default_hparams():
       # Parameters of learning rate schedule.
       lr_schedule='exp_decay',  # Possible values: 'exp_decay', 'step', 'fixed'
       learning_rate=0.010,##0.045
-      lr_decay_factor=0.8,  # Learning exponential decay 0.94
-      lr_num_epochs_per_decay=0.2,  # Number of epochs per lr decay ### 2.0
+      lr_decay_factor=0.9,  # Learning exponential decay 0.94
+      lr_num_epochs_per_decay=1,  # Number of epochs per lr decay ### 2.0
       lr_list=[1.0 / 6, 2.0 / 6, 3.0 / 6,
                4.0 / 6, 5.0 / 6, 1.0, 0.1, 0.01,
                0.001, 0.0001],
