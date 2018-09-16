@@ -221,6 +221,7 @@ def main(_):
       learning_rate, steps_per_epoch = model_lib.get_lr_schedule(
           params, examples_per_epoch, FLAGS.replicas_to_aggregate)
 
+      tf.Print(learning_rate,[learning_rate],'THis issssssssssssssssss learning_rate:')
       optimizer = model_lib.get_optimizer(params, learning_rate)
 
       optimizer = tf.train.SyncReplicasOptimizer(
