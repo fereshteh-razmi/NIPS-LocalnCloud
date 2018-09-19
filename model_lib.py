@@ -74,7 +74,7 @@ def get_lr_schedule(hparams, examples_per_epoch, replicas_to_aggregate=1):
     learning_rate: tensor with learning rate.
     steps_per_epoch: number of training steps per epoch.
   """
-  global_step = tf.train.get_or_create_global_step()
+  global_step = tf.train.get_or_create_global_step()#(global_step-245250),
   steps_per_epoch = float(examples_per_epoch) / float(hparams.batch_size)
   if replicas_to_aggregate > 0:
     steps_per_epoch /= replicas_to_aggregate
@@ -83,7 +83,7 @@ def get_lr_schedule(hparams, examples_per_epoch, replicas_to_aggregate=1):
     decay_steps = long(steps_per_epoch * hparams.lr_num_epochs_per_decay)
     learning_rate = tf.train.exponential_decay(
         hparams.learning_rate,
-        global_step,
+        (global_step - 245250),
         decay_steps,
         hparams.lr_decay_factor,
         staircase=True)
