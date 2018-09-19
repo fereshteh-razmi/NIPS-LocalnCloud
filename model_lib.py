@@ -83,7 +83,7 @@ def get_lr_schedule(hparams, examples_per_epoch, replicas_to_aggregate=1):
     decay_steps = long(steps_per_epoch * hparams.lr_num_epochs_per_decay)
     learning_rate = tf.train.exponential_decay(
         hparams.learning_rate,
-        (global_step - 245250),
+        (global_step - 245500),
         decay_steps,
         hparams.lr_decay_factor,
         staircase=True)
